@@ -39,8 +39,7 @@ class ExchangeRateUSD{
 		$database = new Database();
 		$db = $database->getConnection();
 
-		$query = "SELECT TOP 1 id,
-					date_updated, uts_updated, currency, rate
+		$query = "SELECT TOP 1 id, date_updated, uts_updated, currency, rate
 				FROM " . $this->table_name . " WHERE id = ?";
 
 		$params = array($this->id);
@@ -56,8 +55,8 @@ class ExchangeRateUSD{
 	}
 
 	function update() {
-        $query = "UPDATE" . $this->table_name . 
-                "SET currency = :currency, rate = :rate WHERE id = :id";
+		$query = "UPDATE" . $this->table_name . 
+				"SET currency = :currency, rate = :rate WHERE id = :id";
 
 		$stmt = $this->conn->prepare($query);
 
@@ -80,11 +79,10 @@ class ExchangeRateUSD{
 		$database = new Database();
 		$db = $database->getConnection();
 		$query = "SELECT COUNT(*) as 'total_rows' FROM [CSSC].[dbo]." . $this->table_name . "";
-		// error_log($query);
 
 		$stmt = sqlsrv_query($db, $query);
-        $row = sqlsrv_fetch_array($stmt);
-        
+		$row = sqlsrv_fetch_array($stmt);
+
 		return $row['total_rows'];
 		
 	}
