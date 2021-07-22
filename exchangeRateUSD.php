@@ -78,7 +78,7 @@ class ExchangeRateUSD{
 	public function count() {
 		$database = new Database();
 		$db = $database->getConnection();
-		$query = "SELECT COUNT(*) as 'total_rows' FROM [CSSC].[dbo]." . $this->table_name . "";
+		$query = "SELECT COUNT(*) as 'total_rows' FROM " . $this->table_name . "";
 
 		$stmt = sqlsrv_query($db, $query);
 		$row = sqlsrv_fetch_array($stmt);
